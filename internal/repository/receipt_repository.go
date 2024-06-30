@@ -5,6 +5,10 @@ import (
 	"fmt"
 	"log/slog"
 	"time"
+	. "github.com/go-jet/jet/v2/postgres"
+	. "github.com/carlqt/ezsplit/.gen/ezsplit_dev/public/table/"
+
+	"github.com/carlqt/ezsplit/.gen/ezsplit_dev/public/model/"
 )
 
 type ReceiptRepository struct {
@@ -91,6 +95,8 @@ func (r *ReceiptRepository) FindByID(id string) (*Receipt, error) {
 }
 
 func (r *ReceiptRepository) Delete(userID string, id string) error {
+	stmt := 
+
 	_, err := r.DB.Exec("DELETE FROM receipts WHERE id = $1 and user_id = $2", id, userID)
 	if err != nil {
 		return fmt.Errorf("could not delete receipt with id %s: %w", id, err)
